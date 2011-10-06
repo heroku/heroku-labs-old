@@ -38,7 +38,7 @@ Viewing the details of a particular beta addons. This command does not require a
 Enabling a particular beta addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku beta:enable Bar --app myapp
-    Enabled the bar beta for myapp... done
+    Enabled the bar beta for myapp
     
     $ heroku beta --app myapp
     Foo
@@ -47,7 +47,7 @@ Enabling a particular beta addon for a particular app. Note that '--app' is an o
 Disabling a particular beta addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku beta:disable Bar --app myapp
-    Disabled the bar beta for myapp... done
+    Disabled the bar beta for myapp
     
     $ heroku beta --app myapp
     Foo
