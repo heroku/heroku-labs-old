@@ -24,20 +24,13 @@ Viewing the particular beta addons a particular app has enabled. Note that '--ap
     Foo
     Bar
     
-    To see the details of particular beta addon run:
-    'heroku beta:info [addon]'
-    
-    To enable a particular beta addon run:
-    'heroku beta:enable [addon] --app myapp'
-    
-    To disable a particular beta addon run:
-    'heroku beta:disable [addon] --app myapp'
+    'heroku beta:info [addon]' to see the details of a beta addon
+    'heroku beta:enable [addon] --app myapp' to enable a beta addon
+    'heroku beta:disable [addon] --app myapp' to disable a beta addon
 
 Viewing the details of a particular beta addons. This command does not require an application context.
 
-    $ heroku beta:info Bar
-    Bar helps developers build, deploy, and ...
-    
+    $ heroku beta:info Bar    
     Details: http://addons.heroku.com/bar
     Docs: http://devcenter.heroku.com/articles/bar (username/password)
     Support: support@bar.com
@@ -45,7 +38,7 @@ Viewing the details of a particular beta addons. This command does not require a
 Enabling a particular beta addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku beta:enable Bar --app myapp
-    -----> Enabling the bar beta for myapp... done
+    Enabled the bar beta for myapp... done
     
     $ heroku beta --app myapp
     Foo
@@ -54,7 +47,7 @@ Enabling a particular beta addon for a particular app. Note that '--app' is an o
 Disabling a particular beta addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku beta:disable Bar --app myapp
-    -----> Disabling the bar beta for myapp... done
+    Disabled the bar beta for myapp... done
     
     $ heroku beta --app myapp
     Foo
