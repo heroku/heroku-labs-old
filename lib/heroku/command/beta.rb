@@ -33,7 +33,7 @@ class Heroku::Command::Beta < Heroku::Command::BaseWithApp
   #
   def info
     addon_name = args.shift.downcase rescue nil
-    fail("Usage: heroku beta:info ADDON") if addon_name.to_s.strip.empty?
+    fail("Usage: heroku beta:info [addon]") if addon_name.to_s.strip.empty?
     addon = heroku.get_beta_addon(addon_name) # consider heroku.get_addon
     display " Details: #{addon['details']}"
     display " Docs: #{addon['documentation']}"
@@ -46,7 +46,7 @@ class Heroku::Command::Beta < Heroku::Command::BaseWithApp
   #
   def enable
     addon_name = args.shift.downcase rescue nil
-    fail("Usage: heroku beta:enable ADDON") if addon_name.to_s.strip.empty?
+    fail("Usage: heroku beta:enable [addon]") if addon_name.to_s.strip.empty?
     heroku.enable_beta_addon(app, addon_name)
     display "Enabled #{addon_name} for #{app}.#{heroku.host}"
   end
@@ -57,7 +57,7 @@ class Heroku::Command::Beta < Heroku::Command::BaseWithApp
   #
   def disable
     addon_name = args.shift.downcase rescue nil
-    fail("Usage: heroku beta:disable ADDON") if addon_name.to_s.strip.empty?
+    fail("Usage: heroku beta:disable [addon]") if addon_name.to_s.strip.empty?
     heroku.disable_beta_addon(app, addon_name)
     display "Disabled #{addon_name} for #{app}.#{heroku.host}"
   end
