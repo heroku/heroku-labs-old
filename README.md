@@ -49,7 +49,7 @@ Enabling a particular beta addon for a particular app. Note that '--app' is an o
     
     $ heroku beta --app myapp
     Foo
-    Bar [enabled]
+    Bar *
 
 Disabling a particular beta addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
