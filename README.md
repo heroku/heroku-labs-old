@@ -56,7 +56,7 @@ Disabling a particular beta addon for a particular app. Note that '--app' is an 
 Proposed Core Application Updates
 ---------------------------------
 
-   heroku.list_beta_addons(app) # lists the beta addons for app, enabled addons marked
-   heroku.get_beta_addon(addon) # gets the details of addon, consider generisizing to get_addon
-   heroku.enable_beta_addon(app, addon) # enables addon for app
-   heroku.disable_beta_addon(app, addon) # disables addon for app
+    heroku.list_beta_addons(app) # lists the beta addons for app, enabled addons marked
+    heroku.get_beta_addon(addon) # gets the details of addon, consider generisizing to get_addon
+    heroku.enable_beta_addon(app, addon) # enables addon for app
+    heroku.disable_beta_addon(app, addon) # disables addon for app
