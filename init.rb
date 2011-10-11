@@ -1,8 +1,8 @@
-require 'heroku/command/beta'
+require 'heroku/command/labs'
 
-Heroku::Command::Help.group('Beta') do |group|
-  group.command('beta --app myapp', 'Lists beta addons')
-  group.command('beta:info [addon]', 'Displays details of a beta addon')
-  group.command('beta:enable [addon] --app myapp', 'Enables a beta addon')
-  group.command('beta:disable [addon] --app myapp', 'Disables a beta addon')
+Heroku::Command::Help.group('Labs') do |group|
+  group.command('labs --app myapp', 'Lists addons')
+  group.command('labs:info [addon]', 'Displays details of an addon')
+  group.command('labs:enable [addon] --app myapp', 'Enables an addon')
+  group.command('labs:disable [addon] --app myapp', 'Disables an addon')
 end
