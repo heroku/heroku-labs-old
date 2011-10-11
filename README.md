@@ -18,24 +18,24 @@ Developers not enrolled in the labs program see the following when attempting to
     would make a good tester, and what features you are
     interested in.
 
-Viewing the particular experimental addons a particular app has enabled. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
+Viewing the particular features a particular app has enabled. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku labs --app myapp
     Foo
     Bar
     
-    'heroku labs:info [addon]' to see the details of an addon
-    'heroku labs:enable [addon] --app myapp' to enable an addon
-    'heroku labs:disable [addon] --app myapp' to disable an addon
+    'heroku labs:info feature' to see the details of a feature
+    'heroku labs:enable feature --app myapp' to enable a feature
+    'heroku labs:disable feature --app myapp' to disable a feature
 
-Viewing the details of a particular experimental addon. This command does not require an application context.
+Viewing the details of a particular feature. This command does not require an application context.
 
     $ heroku labs:info Bar    
     Details: http://addons.heroku.com/bar
     Docs: http://devcenter.heroku.com/articles/bar (username/password)
     Support: support@bar.com
 
-Enabling a particular experimental addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
+Enabling a particular feature for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku labs:enable Bar --app myapp
     Enabled bar for myapp
@@ -44,7 +44,7 @@ Enabling a particular experimental addon for a particular app. Note that '--app'
     Foo
     Bar *
 
-Disabling a particular experimental addon for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same patterns as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
+Disabling a particular feature for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
 
     $ heroku labs:disable Bar --app myapp
     Disabled bar for myapp
@@ -56,7 +56,7 @@ Disabling a particular experimental addon for a particular app. Note that '--app
 Proposed Core Application Updates
 ---------------------------------
 
-    heroku.list_experimental_addons(app) # lists the experimental addons for app, enabled addons marked
-    heroku.get_experimental_addon(addon) # gets the details of addon, consider generisizing to get_addon
-    heroku.enable_experimental_addon(app, addon) # enables addon for app
-    heroku.disable_experimental_addon(app, addon) # disables addon for app
+    heroku.list_features(app) # lists the features for app, enabled features marked
+    heroku.get_feature(feature_name) # gets the details of a feature
+    heroku.enable_feature(app, feature_name) # enables feature for app
+    heroku.disable_feature(app, feature_name) # disables feature for app

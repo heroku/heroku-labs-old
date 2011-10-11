@@ -2,11 +2,11 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
 
   # labs
   #
-  # lists addons
+  # lists features
   #
   def index
-    addons = heroku.list_experimental_addons(app)
-    if addons.empty?
+    features = heroku.list_features(app)
+    if features.empty?
       display " You are currently not enrolled in our labs program."
       display " If you would like to participate, and are willing"
       display " to commit to providing helpful feedback and testing"
@@ -15,51 +15,51 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
       display " would make a good tester, and what features you are"
       display " interested in."
     else
-      lines = addons.map do |addon|
-        row = [addon['enabled'] ? '*' : ' ', addon['name']]
+      lines = features.map do |feature|
+        row = [feature['enabled'] ? '*' : ' ', feature['name']]
         row.join(' ')
       end
       display lines.join("\n")
       display
-      display " 'heroku labs:info [addon]' to see the details of an addon"
-      display " 'heroku labs:enable [addon] --app myapp' to enable an addon"
-      display " 'heroku labs:disable [addon] --app myapp' to disable an addon"
+      display " 'heroku labs:info feature' to see the details of a feature"
+      display " 'heroku labs:enable feature --app myapp' to enable a feature"
+      display " 'heroku labs:disable feature --app myapp' to disable a features"
     end
   end
 
-  # labs:info [addon]
+  # labs:info feature
   #
-  # displays details of an addon
+  # displays details of a feature
   #
   def info
-    addon_name = args.shift.downcase rescue nil
-    fail("Usage: heroku labs:info [addon]") if addon_name.to_s.strip.empty?
-    addon = heroku.get_experimental_addon(addon_name)
-    display " Details: #{addon['details']}"
-    display " Docs: #{addon['documentation']}"
-    display " Support: #{addon['support']}"
+    feature_name = args.shift.downcase rescue nil
+    fail("Usage: heroku labs:info feature") if feature_name.to_s.strip.empty?
+    feature = heroku.get_feature(feature_name)
+    display " Details: #{feature['details']}"
+    display " Docs: #{feature['documentation']}"
+    display " Support: #{feature['support']}"
   end
   
-  # labs:enable [addon]
+  # labs:enable feature
   #
-  # enables an addon
+  # enables a feature
   #
   def enable
-    addon_name = args.shift.downcase rescue nil
-    fail("Usage: heroku labs:enable [addon]") if addon_name.to_s.strip.empty?
-    heroku.enable_experimental_addon(app, addon_name)
-    display "Enabled #{addon_name} for #{app}.#{heroku.host}"
+    feature_name = args.shift.downcase rescue nil
+    fail("Usage: heroku labs:enable feature") if feature_name.to_s.strip.empty?
+    heroku.enable_feature(app, feature_name)
+    display "Enabled #{feature_name} for #{app}.#{heroku.host}"
   end
   
-  # labs:disable [addon]
+  # labs:disable feature
   #
-  # disables an addon
+  # disables a feature
   #
   def disable
-    addon_name = args.shift.downcase rescue nil
-    fail("Usage: heroku labs:disable [addon]") if addon_name.to_s.strip.empty?
-    heroku.disable_experimental_addon(app, addon_name)
-    display "Disabled #{addon_name} for #{app}.#{heroku.host}"
+    feature_name = args.shift.downcase rescue nil
+    fail("Usage: heroku labs:disable feature") if feature_name.to_s.strip.empty?
+    heroku.disable_feature(app, feature_name)
+    display "Disabled #{feature_name} for #{app}.#{heroku.host}"
   end
 
 end
