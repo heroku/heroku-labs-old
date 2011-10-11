@@ -32,7 +32,7 @@ Viewing the details of a particular feature. This command does not require an ap
 
     $ heroku labs:info Bar    
     Details: http://addons.heroku.com/bar
-    Docs: http://devcenter.heroku.com/articles/bar (username/password)
+    Docs: http://devcenter.heroku.com/articles/bar
     Support: support@bar.com
 
 Enabling a particular feature for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
@@ -56,7 +56,36 @@ Disabling a particular feature for a particular app. Note that '--app' is an opt
 Proposed Core Application Updates
 ---------------------------------
 
-    heroku.list_features(app) # lists the features for app, enabled features marked
-    heroku.get_feature(feature_name) # gets the details of a feature
-    heroku.enable_feature(app, feature_name) # enables feature for app
-    heroku.disable_feature(app, feature_name) # disables feature for app
+Lists the features for app, enabled features marked
+
+    heroku.list_features(app)
+    {
+       "name": "Foo",
+       "enabled": true
+    }
+
+Gets the details of a feature
+
+    heroku.get_feature(feature_name)
+    {
+       "name": "Foo",
+       "details": "http://addons.heroku.com/bar",
+       "documentation": "http://devcenter.heroku.com/articles/bar",
+       "support": "support@bar.com"
+    }
+
+Enables feature for app
+
+    heroku.enable_feature(app, feature_name)
+    {
+       "name": "Foo",
+       "enabled": true
+    }
+
+Disables feature for app
+
+    heroku.disable_feature(app, feature_name)
+    {
+       "name": "Foo",
+       "enabled": false
+    }
