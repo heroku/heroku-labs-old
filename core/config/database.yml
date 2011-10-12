@@ -1,4 +1,0 @@
-development:
-  adapter: postgresql
-  database: core_development
-  host: localhost
