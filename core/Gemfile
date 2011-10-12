@@ -1,0 +1,9 @@
+source :gemcutter
+
+gem "rails", "2.3.14"
+gem "pg"
+
+group :test do
+  gem 'factory_girl'
+  gem 'rspec'
+end
