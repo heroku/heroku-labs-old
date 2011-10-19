@@ -12,26 +12,36 @@ class FeaturesController < ApplicationController
   
   def show
     feature = Feature.by_name(params[:id]).first
-    respond_to do |format|
-      format.json { render :json => feature }
-    end
+    respond_to { |format| format.json { render :json => feature } }
   end
   
   def enable
     app = App.find(params[:app_id])
     enabled_features = app.tags.split(",")
-    feature_to_enable = Feature.by_name(params[:id]).first
-    enabled_features << feature_to_enable.name
+    Feature.class_eval { attr :enabled, true }
+    feature = Feature.by_name(params[:id]).first
+    enabled_features << feature.name
     app.tags = enabled_features.uniq.join(',')
     app.save
+    feature.enabled = true
+    respond_to do |format|
+      format.json { render :json => feature.to_json(:methods => :enabled) }
+    end
   end
   
   def disable
     app = App.find(params[:app_id])
     enabled_features = app.tags.split(",")
-    feature_to_disable = Feature.by_name(params[:id]).first
-    enabled_features.collect! { |feature| feature unless feature == feature_to_disable.name }
+    Feature.class_eval { attr :enabled, true }
+    feature = Feature.by_name(params[:id]).first
+    enabled_features.collect! do |enabled_feature| 
+      enabled_feature unless enabled_feature == feature.name
+    end
     app.tags = enabled_features.join(',')
     app.save
+    feature.enabled = false
+    respond_to do |format|
+      format.json { render :json => feature.to_json(:methods => :enabled) }
+    end
   end
 end
