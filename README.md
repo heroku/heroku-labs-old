@@ -61,6 +61,9 @@ Lists the features for app, enabled features marked
     heroku.list_features(app)
     {
        "name": "Foo",
+       "details": "http://addons.heroku.com/bar",
+       "documentation": "http://devcenter.heroku.com/articles/bar",
+       "support": "support@bar.com",
        "enabled": true
     }
 
@@ -79,6 +82,9 @@ Enables feature for app
     heroku.enable_feature(app, feature_name)
     {
        "name": "Foo",
+       "details": "http://addons.heroku.com/bar",
+       "documentation": "http://devcenter.heroku.com/articles/bar",
+       "support": "support@bar.com"
        "enabled": true
     }
 
@@ -87,5 +93,8 @@ Disables feature for app
     heroku.disable_feature(app, feature_name)
     {
        "name": "Foo",
+       "details": "http://addons.heroku.com/bar",
+       "documentation": "http://devcenter.heroku.com/articles/bar",
+       "support": "support@bar.com"
        "enabled": false
     }
