@@ -34,9 +34,7 @@ class FeaturesController < ApplicationController
     enabled_features = app.tags.split(",")
     Feature.class_eval { attr :enabled, true }
     feature = Feature.by_name(params[:id]).first
-    enabled_features.collect! do |enabled_feature| 
-      enabled_feature unless enabled_feature == feature.name
-    end
+    enabled_features.collect! { |f| f unless f == feature.name }
     app.tags = enabled_features.join(',')
     app.save
     feature.enabled = false
