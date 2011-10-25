@@ -4,7 +4,7 @@ class FeaturesController < ApplicationController
     enabled_features = app.tags.split(",")
     Feature.class_eval { attr :enabled, true }
     features = Feature.all
-    features.each { |feature| feature.enabled = enabled_features.include? feature.name }
+    features.each { |feature| feature.enabled = enabled_features.include? feature.flag }
     respond_to do |format|
       format.json { render :json => features.to_json(:methods => :enabled) }
     end
@@ -20,7 +20,7 @@ class FeaturesController < ApplicationController
     enabled_features = app.tags.split(",")
     Feature.class_eval { attr :enabled, true }
     feature = Feature.by_name(params[:id]).first
-    enabled_features << feature.name
+    enabled_features << feature.flag
     app.tags = enabled_features.uniq.join(',')
     feature.enabled = true if app.save
     respond_to do |format|
@@ -33,7 +33,7 @@ class FeaturesController < ApplicationController
     enabled_features = app.tags.split(",")
     Feature.class_eval { attr :enabled, true }
     feature = Feature.by_name(params[:id]).first
-    enabled_features.collect! { |f| f unless f == feature.name }
+    enabled_features.collect! { |f| f unless f == feature.flag }
     app.tags = enabled_features.join(',')
     feature.enabled = false if app.save
     respond_to do |format|
