@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013025215) do
+ActiveRecord::Schema.define(:version => 20111025160314) do
 
   create_table "apps", :force => true do |t|
     t.text     "tags"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20111013025215) do
     t.string   "support"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "flag"
   end
 
 end
