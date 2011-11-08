@@ -5,11 +5,17 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
   # lists features
   #
   def index
+    output = []
+    output << "Feature              Enabled    Description"
+    output << "=======              =======    ==========="
     features = heroku.list_features(app)
     lines = features.map do |feature|
-      row = [feature['enabled'] ? '*' : ' ', feature['name']]
-      row.join(' ')
+      name = feature['name']
+      enabled = feature['enabled'] ? 'yes' : 'no'
+      description = feature['description']
+      output << "%-20s %-10s %-78s" % [name, enabled, description]
     end
+    display output.join("\n")
   end
 
   # labs:info feature
@@ -20,9 +26,9 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
     feature_name = args.shift.downcase rescue nil
     fail("Usage: heroku labs:info feature") if feature_name.to_s.strip.empty?
     feature = heroku.get_feature(feature_name)
-    display " Details: #{feature['details']}"
-    display " Docs: #{feature['documentation']}"
-    display " Support: #{feature['support']}"
+    display "=== #{feature['name']}"
+    display "Description:   #{feature['details']}"
+    display "Documentation: #{feature['documentation']}"
   end
   
   # labs:enable feature
