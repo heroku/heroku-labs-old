@@ -6,14 +6,18 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
   #
   def index
     features = heroku.list_features(app)
-    longest  = features.map { |f| f["name"].length }.sort.last
-    format   = "%-#{longest+3}s %-10s %s"
+    longest = features.map { |f| f["name"].length }.sort.last
+    enabled, disabled = features.partition { |f| f["enabled"] }
 
-    display format % %w( Feature Enabled Description )
-    display format % %w( ======= ======= =========== )
+    display "=== Enabled Features"
+    enabled.each do |feature|
+      display "%-#{longest}s  # %s" % [ feature["name"], feature["summary"] ]
+    end
+    display
 
-    features.each do |feature|
-      display format % [ feature["name"], feature["enabled"] ? "yes" : "no", feature["summary"] ]
+    display "=== Disabled Features"
+    disabled.each do |feature|
+      display "%-#{longest}s  # %s" % [ feature["name"], feature["summary"] ]
     end
   end
 

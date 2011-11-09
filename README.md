@@ -15,15 +15,16 @@ The features added through labs are experimental and may change or be removed wi
 View the available features
 
     $ heroku labs --app myapp
-    Feature          Enabled    Description
-    =======          =======    ===========
-    flux_capacitor   no         Adds time travel
+    === Enabled Features
+
+    === Disabled Features
+    flux_capacitor  # add time travel capability
 
 View detailed information about a particular feature
 
     $ heroku labs:info test_feature
     === flux_capacitor
-    Description:   Adds time travel
+    Description:   add time travel capability
     Documentation: http://devcenter.heroku.com/articles/flux_capacitor
     Enabled:       no
 
