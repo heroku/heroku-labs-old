@@ -1,38 +1,38 @@
-heroku-labs-command
-===================
+# heroku-labs
 
-Stubbed client plugin for labs program feature.
+Use experimental features on your Heroku app
 
-Basic CLI DX
-------------
+## WARNING
 
-Viewing the particular features a particular app has enabled. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
+The features added through labs are experimental and may change or be removed without notice.
 
-    $ heroku labs --app myapp
-    foo
-    bar
+## Installation
 
-Viewing the details of a particular feature. This command does not require an application context.
+    $ heroku plugins:install http://github.com/heroku/heroku-labs.git
 
-    $ heroku labs:info bar
-    Details: http://addons.heroku.com/bar
-    Docs: http://devcenter.heroku.com/articles/bar
-    Support: support@bar.com
+## Usage
 
-Enabling a particular feature for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
-
-    $ heroku labs:enable bar --app myapp
-    Enabled bar for myapp
+View the available features
 
     $ heroku labs --app myapp
-    foo
-    bar *
+    Feature          Enabled    Description
+    =======          =======    ===========
+    flux_capacitor   no         Adds time travel
 
-Disabling a particular feature for a particular app. Note that '--app' is an optional argument; when not provided, the context of the current application is assumed (same pattern as with most other Heroku commands), if a context is missing, a friendly error message is displayed.
+View detailed information about a particular feature
+
+    $ heroku labs:info test_feature
+    === flux_capacitor
+    Description:   Adds time travel
+    Documentation: http://devcenter.heroku.com/articles/flux_capacitor
+    Enabled:       no
+
+Enable a feature for an app
+
+    $ heroku labs:enable flux_capacitor --app myapp
+    -----> Enabling flux_capacitora for myapp... done
+
+Disable a feature for an app
 
     $ heroku labs:disable bar --app myapp
-    Disabled bar for myapp
-
-    $ heroku labs --app myapp
-    foo
-    bar
+    -----> Disabling flux_capacitora for myapp... done
