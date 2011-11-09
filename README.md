@@ -23,7 +23,7 @@ Enabling a particular feature for a particular app. Note that '--app' is an opti
 
     $ heroku labs:enable bar --app myapp
     Enabled bar for myapp
-    
+
     $ heroku labs --app myapp
     foo
     bar *
@@ -32,57 +32,7 @@ Disabling a particular feature for a particular app. Note that '--app' is an opt
 
     $ heroku labs:disable bar --app myapp
     Disabled bar for myapp
-    
+
     $ heroku labs --app myapp
     foo
     bar
-
-Proposed Core Application Updates
----------------------------------
-
-Lists the features for app, enabled features marked
-
-    heroku.list_features(app)
-    {
-       "name": "foo",
-       "flag": "foo_flag",
-       "details": "http://addons.heroku.com/bar",
-       "documentation": "http://devcenter.heroku.com/articles/bar",
-       "support": "support@bar.com",
-       "enabled": true
-    }
-
-Gets the details of a feature
-
-    heroku.get_feature(feature_name)
-    {
-       "name": "foo",
-       "flag": "foo_flag",
-       "details": "http://addons.heroku.com/bar",
-       "documentation": "http://devcenter.heroku.com/articles/bar",
-       "support": "support@bar.com"
-    }
-
-Enables feature for app
-
-    heroku.enable_feature(app, feature_name)
-    {
-       "name": "foo",
-       "flag": "foo_flag",
-       "details": "http://addons.heroku.com/bar",
-       "documentation": "http://devcenter.heroku.com/articles/bar",
-       "support": "support@bar.com"
-       "enabled": true
-    }
-
-Disables feature for app
-
-    heroku.disable_feature(app, feature_name)
-    {
-       "name": "foo",
-       "flag": "foo_flag",
-       "details": "http://addons.heroku.com/bar",
-       "documentation": "http://devcenter.heroku.com/articles/bar",
-       "support": "support@bar.com"
-       "enabled": false
-    }
