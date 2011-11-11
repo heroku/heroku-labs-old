@@ -4,7 +4,7 @@ Use experimental features on your Heroku app
 
 ## WARNING
 
-The features added through labs are experimental and may change or be removed without notice.
+The features added through labs are experimental and will change and eventually be removed without notice.
 
 ## Installation
 
