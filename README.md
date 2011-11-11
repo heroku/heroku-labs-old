@@ -31,9 +31,9 @@ View detailed information about a particular feature
 Enable a feature for an app
 
     $ heroku labs:enable flux_capacitor --app myapp
-    -----> Enabling flux_capacitora for myapp... done
+    -----> Enabling flux_capacitor for myapp... done
 
 Disable a feature for an app
 
     $ heroku labs:disable bar --app myapp
-    -----> Disabling flux_capacitora for myapp... done
+    -----> Disabling flux_capacitor for myapp... done
