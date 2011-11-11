@@ -22,7 +22,7 @@ View the available features
 
 View detailed information about a particular feature
 
-    $ heroku labs:info test_feature
+    $ heroku labs:info flux_capacitor
     === flux_capacitor
     Description:   add time travel capability
     Documentation: http://devcenter.heroku.com/articles/flux_capacitor
