@@ -45,6 +45,7 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
     action("Enabling #{feature_name} for #{app}") do
       heroku.enable_feature(app, feature_name)
     end
+    display "WARNING: This feature is experimental and may change or be removed without notice."
   end
 
   # labs:disable FEATURE
