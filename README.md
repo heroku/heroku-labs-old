@@ -32,6 +32,7 @@ Enable a feature for an app
 
     $ heroku labs:enable flux_capacitor --app myapp
     -----> Enabling flux_capacitor for myapp... done
+    WARNING: This feature is experimental and may change or be removed without notice.
 
 Disable a feature for an app
 
