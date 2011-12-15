@@ -1,4 +1,4 @@
-class Heroku::Command::Labs < Heroku::Command::BaseWithApp
+class Heroku::Command::Labs < Heroku::Command::Base
 
   # labs
   #
@@ -42,7 +42,9 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
   def enable
     feature_name = args.shift.downcase rescue nil
     fail("Usage: heroku labs:enable feature") if feature_name.to_s.strip.empty?
-    action("Enabling #{feature_name} for #{app}") do
+    message = "Enabling #{feature_name}"
+    message += " for #{app}" if app
+    action(message) do
       heroku.enable_feature(app, feature_name)
     end
     display "WARNING: This feature is experimental and may change or be removed without notice."
@@ -55,9 +57,17 @@ class Heroku::Command::Labs < Heroku::Command::BaseWithApp
   def disable
     feature_name = args.shift.downcase rescue nil
     fail("Usage: heroku labs:disable feature") if feature_name.to_s.strip.empty?
-    action("Disabling #{feature_name} for #{app}") do
+    message = "Disabling #{feature_name}"
+    message += " for #{app}" if app
+    action(message) do
       heroku.disable_feature(app, feature_name)
     end
+  end
+
+private
+
+  def app
+    options[:app] || nil
   end
 
 end
