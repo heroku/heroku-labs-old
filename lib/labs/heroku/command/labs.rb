@@ -11,13 +11,15 @@ class Heroku::Command::Labs < Heroku::Command::Base
 
     display "=== Enabled Features"
     enabled.each do |feature|
-      display "%-#{longest}s  # %s" % [ feature["name"], feature["summary"] ]
+      tag = feature["kind"] == "app" ? "[app] " : "[user]"
+      display "%s %-#{longest}s  # %s" % [ tag, feature["name"], feature["summary"] ]
     end
     display
 
     display "=== Disabled Features"
     disabled.each do |feature|
-      display "%-#{longest}s  # %s" % [ feature["name"], feature["summary"] ]
+      tag = feature["kind"] == "app" ? "[app] " : "[user]"
+      display "%s %-#{longest}s  # %s" % [ tag, feature["name"], feature["summary"] ]
     end
   end
 
