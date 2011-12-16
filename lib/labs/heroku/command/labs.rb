@@ -64,7 +64,9 @@ class Heroku::Command::Labs < Heroku::Command::Base
 private
 
   def app
-    options[:app] || nil
+    super
+  rescue Heroku::Command::CommandFailed
+    nil
   end
 
   def display_features(features, longest)
