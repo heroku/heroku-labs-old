@@ -7,20 +7,16 @@ class Heroku::Command::Labs < Heroku::Command::Base
   def index
     features = heroku.list_features(app)
     longest = features.map { |f| f["name"].length }.sort.last
-    enabled, disabled = features.partition { |f| f["enabled"] }
+    app_features, user_features = features.partition { |f| f["kind"] == "app" }
 
-    display "=== Enabled Features"
-    enabled.each do |feature|
-      tag = feature["kind"] == "app" ? "[app] " : "[user]"
-      display "%s %-#{longest}s  # %s" % [ tag, feature["name"], feature["summary"] ]
+    if app
+      display "=== App Features (%s)" % app
+      display_features app_features, longest
+      display
     end
-    display
 
-    display "=== Disabled Features"
-    disabled.each do |feature|
-      tag = feature["kind"] == "app" ? "[app] " : "[user]"
-      display "%s %-#{longest}s  # %s" % [ tag, feature["name"], feature["summary"] ]
-    end
+    display "=== User Features (%s)" % Heroku::Auth.user
+    display_features user_features, longest
   end
 
   # labs:info FEATURE
@@ -32,9 +28,8 @@ class Heroku::Command::Labs < Heroku::Command::Base
     fail("Usage: heroku labs:info feature") unless feature_name
     feature = heroku.get_feature(app, feature_name)
     display "=== #{feature['name']}"
-    display "Description:   #{feature['summary']}"
-    display "Documentation: #{feature['docs']}"
-    display "Enabled:       #{feature['enabled'] ? 'yes' : 'no'}"
+    display "Summary: %s" % feature["summary"]
+    display "Docs:    %s" % feature["docs"]
   end
 
   # labs:enable FEATURE
@@ -70,6 +65,16 @@ private
 
   def app
     options[:app] || nil
+  end
+
+  def display_features(features, longest)
+    features.each do |feature|
+      display "[%s] %-#{longest}s  # %s" % [
+        feature["enabled"] ? "+" : " ",
+        feature["name"],
+        feature["summary"]
+      ]
+    end
   end
 
 end
