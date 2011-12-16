@@ -15,18 +15,18 @@ The features added through labs are experimental and will change and eventually 
 View the available features
 
     $ heroku labs --app myapp
-    === Enabled Features
+    === App Features (morning-sunrise-42)
+    [+] flux_capacitor  # Add time travel capability
 
-    === Disabled Features
-    flux_capacitor  # add time travel capability
+    === User Features (user@example.org)
+    [+] superpowers     # Adds flight and laser vision
 
 View detailed information about a particular feature
 
     $ heroku labs:info flux_capacitor
     === flux_capacitor
-    Description:   add time travel capability
-    Documentation: http://devcenter.heroku.com/articles/flux_capacitor
-    Enabled:       no
+    Summary: Add time travel capability
+    Docs:    http://devcenter.heroku.com/articles/flux_capacitor
 
 Enable a feature for an app
 
