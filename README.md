@@ -15,7 +15,7 @@ The features added through labs are experimental and will change and eventually 
 View the available features
 
     $ heroku labs --app myapp
-    === App Features (morning-sunrise-42)
+    === App Features (myapp)
     [+] flux_capacitor  # Add time travel capability
 
     === User Features (user@example.org)
