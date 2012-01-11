@@ -8,7 +8,7 @@ The features added through labs are experimental and will change and eventually 
 
 ## Installation
 
-    $ heroku plugins:install http://github.com/heroku/heroku-labs.git
+    $ heroku plugins:install https://github.com/heroku/heroku-labs.git
 
 ## Usage
 
